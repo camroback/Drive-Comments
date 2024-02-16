@@ -16,7 +16,7 @@ def gps_worker():
     ser = serial.Serial('COM5', 4800, timeout=1.0)
     sio = io.TextIOWrapper(io.BufferedRWPair(ser, ser))
 
-    with open('/Users/camer/OneDrive/Documents/Van/Comments/gps_data_10-26-23_GREENROUTE_AUTONOMY_take2.csv', 'w', newline='') as csvfile:
+    with open('/Users/camer/OneDrive/Documents/Van/Comments/gps_data_2-2-24_BLUEROUTE_AUTONOMY.csv', 'w', newline='') as csvfile:
         csv_writer = csv.writer(csvfile)
         csv_writer.writerow(["time", "latitude", "longitude"])
         while True:
@@ -45,7 +45,7 @@ gpsthread = threading.Thread(target=gps_worker, daemon=True)
 gpsthread.start()
 
 def save_comment_and_close(comment_text, comment_window, gps_data, event=None):
-    filename = "/Users/camer/OneDrive/Documents/Van/Comments/VanDrive_Comments_10-26-23_GREENROUTE_AUTONOMY_take2.json"
+    filename = "/Users/camer/OneDrive/Documents/Van/Comments/VanDrive_Comments_2-2-24_BLUEROUTE_AUTONOMY.json"
 
     new_comment = {"problem": comment_text.get("1.0", "end-1c")}
     comments.append({**gps_data, **new_comment})
