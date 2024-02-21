@@ -7,16 +7,19 @@ import tkinter as tk
 import os
 import json
 import csv
+import time
+from datetime import date
 
+current_date = date.today().strftime("%#m-%#d-%y")
 comments = []  
 
 queue = queue.Queue(maxsize=1)
 
 def gps_worker():
-    ser = serial.Serial('COM5', 4800, timeout=1.0)
+    ser = serial.Serial('COM3', 4800, timeout=1.0)
     sio = io.TextIOWrapper(io.BufferedRWPair(ser, ser))
 
-    with open('/Users/camer/OneDrive/Documents/Van/Comments/gps_data_2-2-24_BLUEROUTE_AUTONOMY.csv', 'w', newline='') as csvfile:
+    with open(f'/Users/camer/OneDrive/Documents/Van/Comments/gps_data_{current_date}_TESTTEST.csv', 'w', newline='') as csvfile:
         csv_writer = csv.writer(csvfile)
         csv_writer.writerow(["time", "latitude", "longitude"])
         while True:
@@ -28,7 +31,7 @@ def gps_worker():
                     if queue.full():
                         queue.get_nowait()
                     queue.put(msg, block=False)
-                    csv_writer.writerow([msg.timestamp, msg.latitude, msg.longitude])
+                    csv_writer.writerow([time.time(), msg.latitude, msg.longitude])
                     csvfile.flush()
                     print(msg)
             except serial.SerialException as e:
@@ -44,14 +47,26 @@ quit_event = threading.Event()
 gpsthread = threading.Thread(target=gps_worker, daemon=True)
 gpsthread.start()
 
-def save_comment_and_close(comment_text, comment_window, gps_data, event=None):
-    filename = "/Users/camer/OneDrive/Documents/Van/Comments/VanDrive_Comments_2-2-24_BLUEROUTE_AUTONOMY.json"
+def save_comment_and_close(comment_text, comment_window, gps_data, msg, event=None):
+    filename = f"/Users/camer/OneDrive/Documents/Van/Comments/VanDrive_Comments_{current_date}_TESTTEST.json"
 
     new_comment = {"problem": comment_text.get("1.0", "end-1c")}
     comments.append({**gps_data, **new_comment})
 
     with open(filename, "w") as f:
         json.dump({"comments": comments}, f, indent=4)
+
+    # Create a file for the new comments (only msg.timestamp() and comment)
+    extra_filename = f"/Users/camer/OneDrive/Documents/Van/Comments/UTCtimestamp_{current_date}_TESTTEST.json"
+
+    new_comment_data = {
+        "timestamp": str(msg.timestamp),
+        "problem": comment_text.get("1.0", "end-1c")
+    }
+
+    with open(extra_filename, "a") as f:
+        json.dump(new_comment_data, f, indent=4)
+        f.write('\n')  # Add a newline after each JSON entry
 
     comment_window.destroy()
 
@@ -62,7 +77,7 @@ def open_comment_box():
             "talker": msg.talker,
             "sentence_type": msg.sentence_type,
             "data": [
-                str(msg.timestamp),
+                str(time.time()),
                 msg.lat,
                 msg.lat_dir,
                 msg.lon,
@@ -93,7 +108,7 @@ def open_comment_box():
         comment_text = tk.Text(comment_window, height=comment_window_height, width=comment_window_width)
         comment_text.pack()
 
-        comment_text.bind("<Return>", lambda event: save_comment_and_close(comment_text, comment_window, gps_data, event))
+        comment_text.bind("<Return>", lambda event: save_comment_and_close(comment_text, comment_window, gps_data, msg, event))
 
         comment_text.focus_set()
 
