@@ -1,0 +1,136 @@
+{
+    "comments": [
+        {
+            "header": {
+                "timestampSec": 1686166869
+            },
+            "event": "near vehicle, stop",
+            "position": {
+                "latitude": 39.35047516666667,
+                "longitude": -82.0861285,
+                "alt_msl": 269.7
+            },
+            "groupID": "1bbbfbae-c839-11ee-a7fc-dd032dba19e8"
+        },
+        {
+            "header": {
+                "timestampSec": 1686166876
+            },
+            "event": "car cut us off/too close",
+            "position": {
+                "latitude": 39.35120916666666,
+                "longitude": -82.08744916666667,
+                "alt_msl": 271.8
+            },
+            "groupID": "1bbbfbae-c839-11ee-a7fc-dd032dba19e8"
+        },
+        {
+            "header": {
+                "timestampSec": 1686166979
+            },
+            "event": "Lost traffic light",
+            "position": {
+                "latitude": 39.36225,
+                "longitude": -82.10575166666666,
+                "alt_msl": 207.6
+            },
+            "groupID": "1bbbfbae-c839-11ee-a7fc-dd032dba19e8"
+        },
+        {
+            "header": {
+                "timestampSec": 1686166987
+            },
+            "event": "PULLED OVER",
+            "position": {
+                "latitude": 39.362527666666665,
+                "longitude": -82.105668,
+                "alt_msl": 207.7
+            },
+            "groupID": "1bbbfbae-c839-11ee-a7fc-dd032dba19e8"
+        },
+        {
+            "header": {
+                "timestampSec": 1686167291
+            },
+            "event": "WAY TOO FAST 55 MPH",
+            "position": {
+                "latitude": 39.367545166666666,
+                "longitude": -82.09964716666667,
+                "alt_msl": 209.3
+            },
+            "groupID": "1bbbfbae-c839-11ee-a7fc-dd032dba19e8"
+        },
+        {
+            "header": {
+                "timestampSec": 1686167426
+            },
+            "event": "PULLED OVER",
+            "position": {
+                "latitude": 39.38059116666667,
+                "longitude": -82.08264166666666,
+                "alt_msl": 215.3
+            },
+            "groupID": "1bbbfbae-c839-11ee-a7fc-dd032dba19e8"
+        },
+        {
+            "header": {
+                "timestampSec": 1686167631
+            },
+            "event": "4 wheeler on side of road",
+            "position": {
+                "latitude": 39.39262683333333,
+                "longitude": -82.07018133333334,
+                "alt_msl": 223.2
+            },
+            "groupID": "1bbbfbae-c839-11ee-a7fc-dd032dba19e8"
+        },
+        {
+            "header": {
+                "timestampSec": 1686167739
+            },
+            "event": "close to guardrail",
+            "position": {
+                "latitude": 39.398619333333336,
+                "longitude": -82.0508785,
+                "alt_msl": 264.9
+            },
+            "groupID": "1bbbfbae-c839-11ee-a7fc-dd032dba19e8"
+        },
+        {
+            "header": {
+                "timestampSec": 1686167942
+            },
+            "event": "CLOSE TO RIGHT SIDE OF ROAD",
+            "position": {
+                "latitude": 39.39618466666667,
+                "longitude": -82.012556,
+                "alt_msl": 207.5
+            },
+            "groupID": "1bbbfbae-c839-11ee-a7fc-dd032dba19e8"
+        },
+        {
+            "header": {
+                "timestampSec": 1686167984
+            },
+            "event": "CLOSE TO GUARD RAIL",
+            "position": {
+                "latitude": 39.39058716666667,
+                "longitude": -82.008184,
+                "alt_msl": 209.0
+            },
+            "groupID": "1bbbfbae-c839-11ee-a7fc-dd032dba19e8"
+        },
+        {
+            "header": {
+                "timestampSec": 1686168045
+            },
+            "event": "road kill",
+            "position": {
+                "latitude": 39.3861805,
+                "longitude": -81.9964645,
+                "alt_msl": 206.0
+            },
+            "groupID": "1bbbfbae-c839-11ee-a7fc-dd032dba19e8"
+        }
+    ]
+}
